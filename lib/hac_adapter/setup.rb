@@ -1,6 +1,6 @@
 module HacAdapter
   class Setup
-    attr_reader :response, :agent, :logged_in
+    attr_reader :response, :agent
 
     def initialize(params)
       @url = params.fetch(:url, nil)
