@@ -12,7 +12,7 @@ module HacAdapter
     def all_reports(params)
       data = []
       HacAdapter::Students.new(params).list_all.each do |student_id|
-        data.push HacAdapter::Grades.new(params, student_id).scrape_for_data
+        data.push HacAdapter::Grades.new(params, student_id).scrape_for_data.results
       end
 
       data
