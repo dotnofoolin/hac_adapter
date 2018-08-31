@@ -23,7 +23,7 @@ def auth_params
   # This is the hash format all the #new instances require.
   # Don't commit your credentials!!!
   {
-      url: 'https://hac31.eschoolplus.k12.ar.us',
+      url: 'https://hac40.esp.k12.ar.us/HomeAccess40',
       school: 'Little Rock School District',
       username: 'Test.User',
       password: 'testpassword'
