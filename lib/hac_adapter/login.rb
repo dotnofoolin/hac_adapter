@@ -1,7 +1,7 @@
 module HacAdapter
   class Login < Setup
     def login
-      page = agent.get("#{@url}/HomeAccess/Account/LogOn?ReturnUrl=%2fhomeaccess%2f")
+      page = agent.get("#{@url}/Account/LogOn")
 
       # Figure out the 'Database' value for @school
       school_database_value = nil
@@ -12,7 +12,7 @@ module HacAdapter
       raise SchoolNotFoundError, "#{@school} not found in select list!" if school_database_value.nil?
 
       # Fill out the login form and submit it.
-      form = page.form_with(action: '/HomeAccess/Account/LogOn?ReturnUrl=%2fhomeaccess%2f')
+      form = page.forms.first # Should only be one form on this page.
       form.field_with(name: 'LogOnDetails.UserName').value = @username
       form.field_with(name: 'LogOnDetails.Password').value = @password
       form.field_with(name: 'Database').value = school_database_value

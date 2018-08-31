@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-Create a hash containing the URL given to you, the school name (from the dropdown on the login page), your username, and password.
+Create a hash containing the URL given to you (e.g 'https://hac40.esp.k12.ar.us/HomeAccess40'), the school name (from the dropdown on the login page), your username, and password. Note that the URL is picky. The example shown is the best format. Login to your HAC account to determine the URL.
 
 ```ruby
 params = {url: "URL", school: "STRING NAME OF SCHOOL", username: "USERNAME", password: "PASSWORD"}

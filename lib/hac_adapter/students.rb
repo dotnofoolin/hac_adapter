@@ -14,8 +14,8 @@ module HacAdapter
       reset_student_info
 
       student_id_list = []
-      page = agent.get("#{@url}/HomeAccess/Frame/StudentPicker")
-      form = page.form_with(action: '/HomeAccess/Frame/StudentPicker')
+      page = agent.get("#{@url}/Frame/StudentPicker")
+      form = page.forms.first # Should only be one form on this page.
       form.radiobuttons_with(name: 'studentId').each do |radio|
         student_id_list.push radio.value
       end
@@ -27,13 +27,13 @@ module HacAdapter
       @student_id = student_id
 
       # Returns a Students object, with a response attribute set. The @response.body will contain the classes and grades. :)
-      page = agent.get("#{@url}/HomeAccess/Frame/StudentPicker")
-      form = page.form_with(action: '/HomeAccess/Frame/StudentPicker')
+      page = agent.get("#{@url}/Frame/StudentPicker")
+      form = page.forms.first # Should only be one form on this page.
       form.radiobutton_with(value: @student_id).check
 
       # Put '/HomeAccess/Classes/Classwork' in all hidden 'url' fields. Server will return 500 errors without it.
       form.fields_with(name: 'url').each do |field|
-        field.value = '/HomeAccess/Classes/Classwork'
+        field.value = "/#{ha_value}/Classes/Classwork"
       end
 
       @response = form.submit
@@ -47,6 +47,10 @@ module HacAdapter
     def reset_student_info
       @student_name = nil
       @student_id = nil
+    end
+
+    def ha_value
+      @url.split('/').last # Should return HomeAccess or HomeAccess40
     end
   end
 end

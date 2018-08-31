@@ -11,7 +11,7 @@ module HacAdapter
     def scrape_for_data
       # TODO: break this method up into smaller, more testable methods.
 
-      @response = agent.get("#{@url}/HomeAccess/Content/Student/Assignments.aspx") # This is the content of the iframe typically displayed on the Classwork page.
+      @response = agent.get("#{@url}/Content/Student/Assignments.aspx") # This is the content of the iframe typically displayed on the Classwork page.
 
       classes = []
       @response.search('div.AssignmentClass').each do |class_div|

@@ -3,6 +3,7 @@ module HacAdapter
     attr_reader :response, :agent
 
     def initialize(params)
+      # Hint: the URL needs to look like this: https://hac40.esp.k12.ar.us/HomeAccess40
       @url = params.fetch(:url, nil)
       @school = params.fetch(:school, nil)
       @username = params.fetch(:username, nil)
