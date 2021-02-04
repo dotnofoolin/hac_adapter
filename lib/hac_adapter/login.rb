@@ -18,7 +18,7 @@ module HacAdapter
       form.field_with(name: 'Database').value = school_database_value
       @response = form.submit
 
-      raise NotLoggedInError, 'You are not logged in!' unless @response.link_with(text: 'Logoff')
+      raise NotLoggedInError, 'You are not logged in!' unless (@response.link_with(text: 'Logoff') || @response.link_with(text: 'Logout'))
 
       self
     end
